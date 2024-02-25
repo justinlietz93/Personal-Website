@@ -358,10 +358,16 @@
         display: flex;
         column-gap: 1rem;
         align-items: center;
+        transition: transform .4s ease-in-out;
     }
 
     .new__img {
         width: 150px;
+
+    }
+
+    .new__card:hover {
+        transform: scale(1.1);
     }
 
     .new__title {
@@ -465,9 +471,20 @@
         cursor: pointer;
     }
 
+    .resume__image {
+        transition: transform 0.4s ease-in-out, border-color 0.4s ease-in-out;
+        border: 3px solid transparent;
+    }
+
     .resume__card:hover {
         border-color: var(--first-color);
     }
+
+    .resume__image:hover {
+        transform: scale(1.06) rotate(1deg);
+        border-color: var(--first-color);
+    }
+
     /* ================ CONTACT ================*/
     .contact__container {
         position: relative;
