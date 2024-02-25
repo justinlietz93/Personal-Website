@@ -127,20 +127,31 @@ const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
 const blogContainer = document.querySelector('.blog__container');
 
+// Function to perform search
+const performSearch = () => {
+    console.log("Search button clicked.");
+    const searchQuery = searchInput.value.toLowerCase();
+    const posts = document.querySelectorAll('.blog__container .new__post');
+
+    posts.forEach(post => {
+        const title = post.querySelector('.blog__post').textContent.toLowerCase();
+        const date = post.querySelector('.blog__date').textContent.toLowerCase();
+
+        if (title.includes(searchQuery) || date.includes(searchQuery)) {
+            // Scroll to the top of the matching post
+            post.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+};
+
+// Listen for click event on search button
 if (searchButton) {
-    searchButton.addEventListener('click', function () {
-        console.log("Search button clicked.");
-        const searchQuery = searchInput.value.toLowerCase();
-        const posts = document.querySelectorAll('.blog__container .new__post');
+    searchButton.addEventListener('click', performSearch);
 
-        posts.forEach(post => {
-            const title = post.querySelector('.blog__post').textContent.toLowerCase();
-            const date = post.querySelector('.blog__date').textContent.toLowerCase();
-
-            if (title.includes(searchQuery) || date.includes(searchQuery)) {
-                // Scroll to the top of the matching post
-                post.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
+    // Listen for 'Enter' key press on search input
+    searchInput.addEventListener('keypress', function (event) {
+        if (event.key === 'Enter') {
+            performSearch();
+        }
     });
 }
