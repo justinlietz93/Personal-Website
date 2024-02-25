@@ -108,7 +108,10 @@ function openEmailDialog() {
     window.location.href = 'mailto:' + email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
 }
 
-document.getElementById('learnMoreButton').addEventListener('click', function() {
+const learnMoreButton = document.getElementById('learnMoreButton');
+
+if (learnMoreButton) {
+    learnMoreButton.addEventListener('click', function() {
     var additionalContent = document.querySelector('.about__additional');
     var learnMoreButton = document.getElementById('learnMoreButton');
     var aboutImage = document.querySelector('.about__computer');
@@ -117,3 +120,27 @@ document.getElementById('learnMoreButton').addEventListener('click', function() 
     learnMoreButton.style.display = 'none'; // Hide the "Learn More" button
     aboutImage.style.marginRight = '-14rem';
 });
+}
+
+// Search functionality
+const searchInput = document.getElementById('searchInput');
+const searchButton = document.getElementById('searchButton');
+const blogContainer = document.querySelector('.blog__container');
+
+if (searchButton) {
+    searchButton.addEventListener('click', function () {
+        console.log("Search button clicked.");
+        const searchQuery = searchInput.value.toLowerCase();
+        const posts = document.querySelectorAll('.blog__container .new__post');
+
+        posts.forEach(post => {
+            const title = post.querySelector('.blog__post').textContent.toLowerCase();
+            const date = post.querySelector('.blog__date').textContent.toLowerCase();
+
+            if (title.includes(searchQuery) || date.includes(searchQuery)) {
+                // Scroll to the top of the matching post
+                post.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+}

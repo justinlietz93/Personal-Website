@@ -330,6 +330,88 @@
         color: var(--first-color);
     }
 
+    /* ================ BLOG ================*/
+    .new__post {
+        margin-bottom: 10rem;
+    }
+    .blog__container {
+        justify-content: center;
+        align-items: center;
+        width: 900px;
+        margin: auto;
+    }
+    .blog__title {
+        font-size: var(--bigger-font-size);
+        font-family: var(--second-font);
+        text-align: center;
+        margin-top: 1.5rem;
+    }
+
+    .blog__data {
+        text-indent: 3rem;
+        text-align: left;
+        font-family: var(--first-font);
+        font-size: var(--h3-font-size);
+        margin-top: 2rem;
+    }
+
+    .blog__date {
+        font-size: var(--normal-font-size);
+        color: var(--first-color);
+        margin-bottom: 1.5rem;
+    }
+
+    /* CSS for Search Bar */
+    .search__container {
+        display: flex;
+        align-items: center; /* Align items vertically */
+        margin-top: 5rem;
+        margin-bottom: 10rem;
+    }
+
+    
+    #searchInput {
+        flex: 1; /* Take up remaining space */
+        width: auto; /* Allow input to grow as needed */
+        padding: 10px;
+        margin-right: 10px; /* Add spacing between input and button */
+        border: 2px solid #3498db; /* Blue border */
+        border-radius: 5px;
+        font-size: 16px;
+        color: #fff; /* White text */
+        background-color: #2c3e50; /* Dark background */
+        outline: none;
+    }
+    
+    #searchInput::placeholder {
+        color: #fff; /* Placeholder text color */
+    }
+    
+    /* Search button */
+    #searchButton {
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+    
+    /* CSS for Search Bar Focus State */
+    #searchInput:focus {
+        border-color: var(--first-color); /* Blue border on focus */
+    }
+
+    /* ================ BUTTON ================*/
+    .button {
+        display: inline-flex;
+        background-color: var(--first-color);
+        color: var(--black-color);
+        font-weight: var(--font-semi-bold);
+        padding: 1.125rem 2rem;
+        transition: background-color .4s;
+    }
+
+    .button:hover {
+        background-color: var(--first-color-alt);
+    }
+
     /* ================ BUTTON ================*/
     .button {
         display: inline-flex;
