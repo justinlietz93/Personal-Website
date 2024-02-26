@@ -80,6 +80,8 @@ const sr = ScrollReveal({
 
 sr.reveal('.home__data')
 
+sr.reveal('.search__container', { scale: 1.2, origin: 'bottom'})
+
 sr.reveal('.home__img, .about__data, .about__img, .contact__data, .resume')
 
 // sr.reveal('.home__software', {rotate: {z: -15}})
@@ -97,9 +99,11 @@ sr.reveal('.footer__container', { scale: 1})
 sr.reveal('.footer__img-1', { interval: 100, scale: 1.2, delay: 300})
 sr.reveal('.footer__img-2', { interval: 100, scale: 1.2, delay: 600})
 
+// ============== OTHER ANIMATIONS AND FUNCTIONS ============== //
+
 // Function to download file
 function downloadFile() {
-    window.open('../assets/files/CV.pdf', '_blank')
+    window.open('../assets/files/CV.pdf', target='_blank')
 }
 
 
@@ -111,13 +115,16 @@ function openEmailDialog() {
     window.location.href = 'mailto:' + email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
 }
 
+// ============== LEARNMORE BUTTON ANIMATION ============== //
+
+const learnMoreButton = document.getElementById('learnMoreButton');
+
 if (learnMoreButton) {
     learnMoreButton.addEventListener('click', function() {
-        var additionalContent = document.querySelector('.about__additional');
-        var learnMoreButton = document.getElementById('learnMoreButton');
-        var aboutImage = document.querySelector('.about__computer');
-        var text = `Why I love software development:\n\nEver since I used a computer to learn the alphabet when I was in preschool, I have felt like software was magic. I always wondered how it worked, and what was going on inside the machine. Now, my curiosity has been fueled continually by the evolving world of technology.\n\nWhat I'm passionate about:\n\nI'm really inspired by the complexity and potency of software and how specialized individuals form teams to craft intuitive, user-friendly software. It's fascinating to be part of the magic behind the scenes.\n\nWhat I'm currently working on:\n\nI am currently working on a personal project that will be an iOS-based application that will allow users to create and manage their own workout routines using AI. I have used many workout apps in the past and I see a lot of room for improvement. I am excited to see where this project takes me.\n\n`;
-        var speed = 10; // Typing speed in milliseconds
+        const additionalContent = document.querySelector('.about__additional');
+        const aboutImage = document.querySelector('.about__computer');
+        const text = `Why I love software development:\n\nEver since I used a computer to learn the alphabet when I was in preschool, I have felt like software was magic. I always wondered how it worked, and what was going on inside the machine. Now, my curiosity has been fueled continually by the evolving world of technology.\n\nWhat I'm passionate about:\n\nI'm really inspired by the complexity and potency of software and how specialized individuals form teams to craft intuitive, user-friendly software. It's fascinating to be part of the magic behind the scenes.\n\nWhat I'm currently working on:\n\nI am currently working on a personal project that will be an iOS-based application that will allow users to create and manage their own workout routines using AI. I have used many workout apps in the past and I see a lot of room for improvement. I am excited to see where this project takes me.\n\n`;
+        const speed = 10; // Typing speed in milliseconds
 
         // Hide the "Learn More" button
         learnMoreButton.style.display = 'none';
@@ -130,9 +137,9 @@ if (learnMoreButton) {
 
         function typeWriter(lines, lineIndex) {
             if (lineIndex < lines.length) {
-                var line = lines[lineIndex];
-                var charIndex = 0;
-                var interval = setInterval(function() {
+                const line = lines[lineIndex];
+                let charIndex = 0;
+                const interval = setInterval(function() {
                     if (charIndex === line.length) {
                         clearInterval(interval); // Move to the next line
                         document.getElementById("typedText").innerHTML += '<br>'; // Insert line break
@@ -150,10 +157,11 @@ if (learnMoreButton) {
     });
 }
 
-// Search functionality
+
+console.log("DOM Loaded");
+
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
-const blogContainer = document.querySelector('.blog__container');
 
 // Function to perform search
 const performSearch = () => {
@@ -174,6 +182,8 @@ const performSearch = () => {
 
 // Listen for click event on search button
 if (searchButton) {
+    console.log("Search button found");
+    
     searchButton.addEventListener('click', performSearch);
 
     // Listen for 'Enter' key press on search input
@@ -182,4 +192,6 @@ if (searchButton) {
             performSearch();
         }
     });
+} else {
+    console.log("Search button not found");
 }

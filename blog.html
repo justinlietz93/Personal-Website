@@ -55,22 +55,17 @@
                 <img src="assets/img/home-bg.jpg" alt="image" class="home__bg">
                 <div class="home__shadow"></div>
 
-                <!--============== TODO: CHANGE HOME CONTAINER TO BLOG CONTAINER AND ADJUST CSS ==============-->
-                <div class="home__container container grid">
-                    <div class="home__data">
-                        <h1 class="home__title">
-                            Welcome to <br> My Blog
-                        </h1>
+                <div class="home__container container">
+                    <h2 class="blog__title" id="blog">
+                        Welcome to my blog
+                    </h2>
 
-                        <a href="#blog" class="button">Latest Post</a>
-
-                        <!-- <img src="../assets/img/software.png" alt="software" class="home__software"> -->
+                    <!-- Search Bar -->
+                    <div class="search__container">
+                        <input type="search" id="searchInput" placeholder="Search for post by title or date">
+                        <button class="button" id="searchButton">Search</button>
                     </div>
-
-                    <div class="home__img">
-                        <img src="assets/img/blog-img.png" alt="Justin Lietz" class="blog__img">
-                    </div>
-
+                    
                     <footer class="home__footer">
                         <div class="home__about">
                             <a href="#contact"><i class="ri-question-line"></i></a>
@@ -99,16 +94,8 @@
             </section>
             <!--============== BLOG =================-->
             <section class="blog__section section">
-                <h2 class="blog__title" id="blog">Blog</h2>
 
-                
-            
                 <div class="blog__container">
-                    <!-- Search Bar -->
-                    <div class="search__container">
-                        <input type="search" id="searchInput" placeholder="Search for post by title or date">
-                        <button class="button" id="searchButton">Search</button>
-                    </div>
 
                     <div class="new__post">
                         <h3 class="blog__post">Second Post</h3>
@@ -134,7 +121,7 @@
                         </p>
                     </div>
 
-                    </div>
+                </div>
             </section>
 
             <!--============== CONTACT ==============-->
