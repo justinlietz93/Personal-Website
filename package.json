@@ -1,0 +1,34 @@
+{
+  "name": "personal-website",
+  "version": "1.0.0",
+  "description": "My personal website",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justinlietz93/Personal-Website.git#dev2"
+  },
+  "keywords": [
+    "personal",
+    "website",
+    "blog",
+    "portfolio",
+    "frontend",
+    "node.js",
+    "express",
+    "javascript",
+    "html",
+    "css"
+  ],
+  "author": "Justin Lietz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/justinlietz93/Personal-Website/issues"
+  },
+  "homepage": "https://github.com/justinlietz93/Personal-Website/tree/dev2#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog Post Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+        }
+
+        .container {
+            background-color: #aaaaaa;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        #title {
+            width: 50%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        #content {
+            padding: 10px;
+        }
+
+        #date {
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Add a New Blog Post</h2>
+        <form id="blogForm" action="#">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+            <br>
+            <label for="content" id="content">Content:</label>
+            <textarea id="content" name="content" rows="6" required></textarea>
+            <input type="submit" value="Submit Post">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("blogForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            var title = formData.get("title");
+            var date = formData.get("date");
+            var content = formData.get("content");
+            var newPost = { "title": title, "date": date, "content": content };
+
+            // Fetch existing posts from the server
+            fetch("/submit-post", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(newPost)
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log("Post submitted successfully!");
+                    window.location.href = "/blog.html"; // Redirect to the blog.html page
+                } else {
+                    console.error("Failed to submit post");
+                }
+            })
+            .catch(error => {
+                console.error("Error submitting post:", error);
+            });
+
+        });
+    </script>
+</body>
+</html>

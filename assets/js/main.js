@@ -157,8 +157,7 @@ if (learnMoreButton) {
     });
 }
 
-
-console.log("DOM Loaded");
+// ============== BLOG SEARCH FUNCTIONALITY ============== //
 
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
@@ -195,3 +194,30 @@ if (searchButton) {
 } else {
     console.log("Search button not found");
 }
+
+// Fetch blog data from server
+fetch("blog.json")
+    .then(response => response.json())
+    .then(data => {
+        console.log("Data received from server:", data);
+        var container = document.getElementById("blogContainer");
+        if (!container) {
+            console.error("Blog container not found in HTML");
+            return;
+        }
+
+        data.reverse(); // Reverse the order of the posts so that the newest post is first
+
+        data.forEach(post => {
+            var postHTML = `<div class="new__post">
+                                <h3 class="blog__post">${post.title}</h3>
+                                <h3 class="blog__date">Date: ${post.date}</h3>
+                                <p class="blog__data">${post.content}</p>
+                            </div>`;
+            container.innerHTML += postHTML;
+            console.log("Post added to blog container:", post.title);
+        });
+    })
+    .catch(error => {
+        console.error("Error fetching or parsing blog data:", error);
+    });
